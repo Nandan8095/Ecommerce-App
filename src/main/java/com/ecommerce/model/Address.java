@@ -19,7 +19,7 @@ public class Address {
 
     @Column(name="street")
     @NotBlank
-    @Size(min = 5,message = "street should contain minimum 5 characters")
+    @Size(min = 7,message = "street should contain minimum 7 characters")
     private String street;
 
     @Column(name="city")
