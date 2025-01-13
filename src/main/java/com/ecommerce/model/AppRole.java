@@ -2,8 +2,8 @@ package com.ecommerce.model;
 
 public enum AppRole {
 
-    Role_Admin,
-    Role_User,
-    Role_Seller
+    ROLE_ADMIN,
+    ROLE_USER,
+    ROLE_SELLER
 
 }
