@@ -26,13 +26,11 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="user_id")
-    private Long user_id;
+    private Long userId;
 
     @NotBlank
     @Size(min = 3, message = "username must contain atleast 3 characters")
-    @Column(name = "username")
-    private String user_name;
+    private String userName;
 
     @NotBlank
     @Email
@@ -47,7 +45,7 @@ public class User {
 
 
     public User(String user_name, String email, String password) {
-        this.user_name = user_name;
+        this.userName = user_name;
         this.email = email;
         this.password = password;
     }

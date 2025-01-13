@@ -14,14 +14,14 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="role_id")
-    private Long role_id;
+    private Long roleId;
 
-    @Column(name="rolename")
+    @Column(name="role_name")
     @NotBlank
-    private AppRole role_name;
+    private AppRole roleName;
 
     public Role(AppRole role_name) {
-        this.role_name = role_name;
+        this.roleName = role_name;
     }
 
 
