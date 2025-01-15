@@ -1,7 +1,6 @@
 package com.ecommerce.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +16,6 @@ public class Role {
     private Long roleId;
 
     @Column(name="role_name")
-    @NotBlank
     private AppRole roleName;
 
     public Role(AppRole role_name) {

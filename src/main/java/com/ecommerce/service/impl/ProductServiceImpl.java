@@ -55,7 +55,7 @@ public class ProductServiceImpl implements ProductService {
                 ?Sort.by(sortBy).ascending()
                 :Sort.by(sortBy).descending();
 
-        Pageable pageDetails = PageRequest.of(pageNumber - 1, pageSize, sortByAndOrder);
+        Pageable pageDetails = PageRequest.of(pageNumber, pageSize, sortByAndOrder);
         Page<Product> product1 = productRepository.findAll(pageDetails);
 
 

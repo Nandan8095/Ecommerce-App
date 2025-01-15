@@ -25,6 +25,11 @@ public class ProductController {
 
     }
 
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello World";
+    }
+
     //Get All products
     @GetMapping("/public/products")
     public ResponseEntity<ProductResponse> getAllProducts(
