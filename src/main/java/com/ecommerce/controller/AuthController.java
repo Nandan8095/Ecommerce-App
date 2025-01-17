@@ -21,10 +21,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -130,4 +127,42 @@ public class AuthController {
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
+
+    @GetMapping("/username")
+    public String currentUserName(Authentication authentication) {
+        if (authentication!= null)
+            return authentication.getName();
+        else
+            return "Null";
+    }
+
+
+    @GetMapping("/user")
+    public ResponseEntity<?> getUserDetails(Authentication authentication) {
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+
+
+        List<String> roles = userDetails.getAuthorities().stream()
+                .map(item -> item.getAuthority())
+                .collect(Collectors.toList());
+
+        UserInfoResponse response = new UserInfoResponse(userDetails.getId(),
+                userDetails.getUsername(), roles);
+
+        return ResponseEntity.ok(response);
+
+    }
+
+    @PostMapping("/signout")
+    public ResponseEntity<String> signOut(@RequestHeader("Authorization") String authorizationHeader) {
+        // Extract the token from the Authorization header
+        String token = authorizationHeader.replace("Bearer ", "");
+
+        // Here, you can optionally add the token to a blacklist (server-side)
+        // Example: tokenService.addToBlacklist(token);  // You can implement this if needed
+
+        return ResponseEntity.ok("Sign-out successful");
+    }
+
+
 }
