@@ -46,8 +46,6 @@ public class AuthController {
     PasswordEncoder encoder;
 
 
-
-
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
         Authentication authentication;
